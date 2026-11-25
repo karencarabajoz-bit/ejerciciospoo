@@ -23,9 +23,9 @@ class Medicamento:
     def __str__(self):
         return f"{self.nombre}(${self.precio:.2f})-{self.cajas} cajas"
 
-class GestionMdicamento:
+class GestionMedicamento:
     def __init__(self):
-        self.vender_medicamentos= []
+        self.medicamentos= []
 
     def registrar(self, nombre, precio, cajas):
         if nombre.strip()== "":
@@ -35,11 +35,12 @@ class GestionMdicamento:
         if cajas <0:
             return False, "Las cajasa no pueden ser nagativo"
 
-        codigo = len(self.vender_medicamento)+ 1
+        codigo = len(self.medicamentos)+ 1
         self.medicamentos.append(Medicamento(codigo, nombre, precio, cajas))
         return True, codigo
+    
     def buscar(self, codigo):
-        for med in self.vender_medicamentos:
+        for med in self.medicamentos:
             if med.codigo == codigo:
                 return True, med
         return False, "no existe ese codigo"
